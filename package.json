@@ -1,0 +1,13 @@
+{
+    "name": "divergent",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "jest": "^28.0.3"
+    },
+    "scripts": {
+        "test": "jest --watchAll"
+    }
+}
