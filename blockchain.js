@@ -38,13 +38,20 @@ class Blockchain {
 
             // get the real last hash from the prior block
             const actualLastHash = chain[i - 1].hash;
-            const { timestamp, lastHash, hash, data } = block;
+            const { timestamp, lastHash, hash, nonce, difficulty, data } =
+                block;
 
             // check if the hashes are the same
             if (lastHash !== actualLastHash) return false;
 
             // validate the hash
-            const validatedHash = cryptoHash(timestamp, lastHash, data);
+            const validatedHash = cryptoHash(
+                timestamp,
+                lastHash,
+                data,
+                nonce,
+                difficulty
+            );
 
             // confirm the hash is valid
             if (hash !== validatedHash) return false;
