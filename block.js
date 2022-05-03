@@ -21,13 +21,18 @@ class Block {
     static mineBlock({ lastBlock, data }) {
         let hash, timestamp;
         const lastHash = lastBlock.hash;
-        const { difficulty } = lastBlock;
+        let { difficulty } = lastBlock;
         let nonce = 0;
 
         // create the hash after setting nonce correctly
         do {
             nonce++;
             timestamp = Date.now();
+            // create difficulty relevant to current timestamp and last block
+            difficulty = Block.adjustDifficulty({
+                originalBlock: lastBlock,
+                timestamp,
+            });
             hash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
         } while (hash.substring(0, difficulty) !== "0".repeat(difficulty));
 
