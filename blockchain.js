@@ -32,7 +32,7 @@ class Blockchain {
         if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis()))
             return false;
 
-        // loop through each block
+        // loop through each block to make sure they meet conditions
         for (let i = 1; i < chain.length; i++) {
             const block = chain[i];
 
@@ -41,8 +41,12 @@ class Blockchain {
             const { timestamp, lastHash, hash, nonce, difficulty, data } =
                 block;
 
+            const lastDifficulty = chain[i - 1].difficulty;
+
             // check if the hashes are the same
             if (lastHash !== actualLastHash) return false;
+            // make sure that the difficulty has not been jumped
+            if (Math.abs(lastDifficulty - difficulty > 1)) return false;
 
             // validate the hash
             const validatedHash = cryptoHash(

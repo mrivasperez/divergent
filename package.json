@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "hex-to-binary": "^1.0.1"
+    },
     "devDependencies": {
         "jest": "^28.0.3"
     },

@@ -1,5 +1,8 @@
-const { GENESIS_DATA, MINE_RATE } = require("./config");
+const hexToBinary = require("hex-to-binary");
+
 const cryptoHash = require("./crypto-hash");
+
+const { GENESIS_DATA, MINE_RATE } = require("./config");
 
 class Block {
     // construct block
@@ -34,7 +37,11 @@ class Block {
                 timestamp,
             });
             hash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
-        } while (hash.substring(0, difficulty) !== "0".repeat(difficulty));
+        } while (
+            // run difficutly based on binary
+            hexToBinary(hash).substring(0, difficulty) !==
+            "0".repeat(difficulty)
+        );
 
         return new this({
             timestamp,
@@ -49,6 +56,10 @@ class Block {
     // set mining difficulty value
     static adjustDifficulty({ originalBlock, timestamp }) {
         const { difficulty } = originalBlock;
+
+        // make sure difficulty is never below 1 to prevent errors
+        if (difficulty < 1) return 1;
+
         const differenceInTimestamps = timestamp - originalBlock.timestamp;
 
         // check if mining rate meets preferred rate

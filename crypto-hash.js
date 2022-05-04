@@ -6,8 +6,9 @@ const cryptoHash = (...inputs) => {
     // sort and join inputs
     hash.update(inputs.sort().join(" "));
 
-    // return the generated hex hash
-    return hash.digest("hex");
+    // create hex hash and return in binary form
+    const hexHash = hash.digest("hex");
+    return hexHash;
 };
 
 module.exports = cryptoHash;
