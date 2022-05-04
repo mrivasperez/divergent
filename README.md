@@ -2,7 +2,15 @@
 
 A blockchain and cryptocurrency implemented in JavaScript.
 
-## The Blockchain...
+## Why?
+
+I wanted to understand blockchain and found it really difficult to understand the key concepts. To help me understand them better, I decide to build one myself.
+
+**Also,** I hope that by reviewing this code and interacting with this blockchain, other people can more easily understand the blockchain.
+
+## Status
+
+### The Blockchain...
 
 -   Created the fundamental blockchain class.
     -   Built the genesis block
@@ -16,4 +24,7 @@ A blockchain and cryptocurrency implemented in JavaScript.
     -   switched to hexadecimal character-based difficulty criteria to binary bit-based difficulty criteria
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
 
-## API and Network
+### API and Network
+
+-   [ ] Read
+-   [ ] Write (mine)
