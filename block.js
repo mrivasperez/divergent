@@ -76,6 +76,4 @@ const block1 = new Block({
     hash: "foo-hash",
 });
 
-console.log("block1", block1);
-
 module.exports = Block;

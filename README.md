@@ -25,6 +25,8 @@ I wanted to understand blockchain and found it really difficult to understand th
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
 
 ### API and Network
+-   [X] Read
+-   [X] Write (mine)
 
--   [ ] Read
--   [ ] Write (mine)
+## To Dos
+- [ ] Organize file structure
