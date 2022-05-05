@@ -1,6 +1,6 @@
-# Divergent
+# Divergent Technology
 
-A blockchain and cryptocurrency implemented in JavaScript.
+A cryptocurrency and full stack crypto platform implemented in JavaScript.
 
 ## Why?
 
