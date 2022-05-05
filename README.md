@@ -4,9 +4,15 @@ A blockchain and cryptocurrency implemented in JavaScript.
 
 ## Why?
 
-I wanted to understand blockchain and found it really difficult to understand the key concepts. To help me understand them better, I decide to build one myself.
+One of my core beliefs is that cryptocurrencies and the blockchain are the future of finance, digital art, and IT. The transformation is happening now, but it is leaving too many people behind.
 
-**Also,** I hope that by reviewing this code and interacting with this blockchain, other people can more easily understand the blockchain.
+The biggest barriers to entry is simple: it is too difficult of a process to understand. Mining, wallets, transactions, and cryptography don't make sense unless you spend hours researching.
+
+To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with the blockchain and more easily understand the technologies behind it without paying a dime.
+
+The end goal is to help as many people understand cryptocurrencies/the blockchain and how it operates, so they can confidently participate in the rapidly growing divergent society of the future.
+
+You are welcome to contribute, provide feedback, fork, and modify it to make it your own.
 
 ## Status
 
@@ -23,10 +29,10 @@ I wanted to understand blockchain and found it really difficult to understand th
     -   adjusted difficutly for each block to ensure block are mined closest to desired rate
     -   switched to hexadecimal character-based difficulty criteria to binary bit-based difficulty criteria
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
+    -
 
-### API and Network
--   [X] Read
--   [X] Write (mine)
+### To Dos (you're welcome to help)
 
-## To Dos
-- [ ] Organize file structure
+-   [ ] Organize file structure
+-   [ ] Create front-end
+-   [ ] Complete
