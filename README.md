@@ -32,9 +32,14 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -
 
 ### The Back-end
-- Sync blockchain when user mines new block (using Redis PubSub)
-  - Communicate new chain with all clients
-  - 
+
+-   Set up express API to allow for interaction with the blockchain
+    -   GET request to read
+    -   POST request to wrtie
+-   Implemented real time messaging network through Redis to enable chain broadcasting
+    -   Confirmed real time messaging works by starting peers through alternate ports
+-   Optimized code to avoid redundant interaction
+
 ### To Dos (you're welcome to help)
 
 -   [ ] Organize file structure
