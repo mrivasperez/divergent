@@ -31,6 +31,10 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
     -
 
+### The Back-end
+- Sync blockchain when user mines new block (using Redis PubSub)
+  - Communicate new chain with all clients
+  - 
 ### To Dos (you're welcome to help)
 
 -   [ ] Organize file structure

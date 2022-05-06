@@ -8,7 +8,7 @@ let previousTimestamp,
     nextBlock,
     timeDifference,
     averageMineRate;
-console.log("firstblock", blockchain.chain[blockchain.chain.length - 1]);
+// console.log("firstblock", blockchain.chain[blockchain.chain.length - 1]);
 const times = [];
 
 for (let i = 0; i < 10000; i++) {
