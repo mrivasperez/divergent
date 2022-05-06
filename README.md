@@ -1,6 +1,6 @@
 # Divergent Technology
 
-A cryptocurrency and full stack crypto platform implemented in JavaScript.
+A blockchain, cryptocurrency, and comprehensive crypto platform implemented in JavaScript.
 
 ## Why?
 
@@ -40,8 +40,9 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   Confirmed real time messaging works by starting peers through alternate ports
 -   Optimized code to avoid redundant interaction
 
-### To Dos (you're welcome to help)
+### The Cryptocurrency
 
--   [ ] Organize file structure
--   [ ] Create front-end
--   [ ] Complete
+
+
+
+
