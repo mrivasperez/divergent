@@ -31,7 +31,7 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
     -
 
-### The Back-end
+### The Back-End API
 
 -   Set up express API to allow for interaction with the blockchain
     -   GET request to read
@@ -42,7 +42,10 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
 
 ### The Cryptocurrency
 
-
-
-
-
+-   Set up the core wallet class for the cryptocurrency
+-   Developed key pair and public key addressing system
+-   Implemented signature generation and verification to suppor transactions
+-   Built the main transaction class to create output map and structure inputs
+-   Created functionality to validate transactions
+-   Improved hash function to recognize objects with new properties as changes in incoming data
+-   Tested to prevent vulnerabilities
