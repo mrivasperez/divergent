@@ -127,8 +127,7 @@ describe("Transaction", () => {
         it("should maintain a total output that matches the input amount", () => {
             expect(
                 Object.values(transaction.outputMap).reduce(
-                    total,
-                    (outputAmount) => total + outputAmount
+                    (total, outputAmount) => total + outputAmount
                 )
             ).toEqual(transaction.input.amount);
         });

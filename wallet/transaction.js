@@ -35,6 +35,20 @@ class Transaction {
         };
     }
 
+    update({ senderWallet, recipient, amount }) {
+        this.outputMap[recipient] = amount;
+
+        // subtract amount from sender key
+        this.outputMap[senderWallet.publicKey] =
+            this.outputMap[senderWallet.publicKey] - amount;
+
+        // create new signature
+        this.input = this.createInput({
+            senderWallet,
+            outputMap: this.outputMap,
+        });
+    }
+
     static validTransaction(transaction) {
         const {
             // destructure transaction props
