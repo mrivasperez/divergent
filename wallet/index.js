@@ -1,6 +1,5 @@
 const { STARTING_BALANCE } = require("../config.js");
-const { ec } = require("../util");
-const cryptoHash = require("../util/crypto-hash");
+const { ec, cryptoHash } = require("../util");
 
 class Wallet {
     constructor() {
