@@ -5,6 +5,11 @@ class TransactionPool {
         this.transactionMap = {};
     }
 
+    // clear out the transaction pool
+    clear() {
+        this.transactionMap = {};
+    }
+
     setTransaction(transaction) {
         // add transaction to map with id as key
         this.transactionMap[transaction.id] = transaction;
@@ -28,6 +33,18 @@ class TransactionPool {
         return Object.values(this.transactionMap).filter((transaction) =>
             Transaction.validTransaction(transaction)
         );
+    }
+
+    clearBlockchainTransactions({ chain }) {
+        for (let i = 1; i < chain.length; i++) {
+            const block = chain[i];
+            // go through each transaction
+            for (let transaction of block.data) {
+                if (this.transactionMap[transaction.id]) {
+                    delete this.transactionMap[transaction.id];
+                }
+            }
+        }
     }
 }
 
