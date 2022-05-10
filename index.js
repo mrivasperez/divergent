@@ -3,9 +3,13 @@ const express = require("express");
 const request = require("request");
 const Blockchain = require("./blockchain/index");
 const PubSub = require("./app/pubsub");
+const TransactionPool = require("./wallet/transaction-pool");
+const Wallet = require("./wallet");
 
 const app = express();
 const blockchain = new Blockchain();
+const transactionPool = new TransactionPool();
+const wallet = new Wallet();
 const pubsub = new PubSub({ blockchain });
 const DEFAULT_PORT = 3000;
 
@@ -33,6 +37,24 @@ app.post("/api/mine", (req, res) => {
     pubsub.broadcastChain();
 
     res.redirect("/api/blocks");
+});
+
+// create a transaction
+app.post("/api/transact", (req, res) => {
+    // set amount and recipient
+    const { amount, recipient } = req.body;
+
+    let transaction;
+
+    try {
+        transaction = wallet.createTransaction({ recipient, amount });
+    } catch (error) {
+        return res.status(400).json({ type: "error", message: error.message });
+    }
+
+    transactionPool.setTransaction(transaction);
+
+    res.json({ type: "success", transaction });
 });
 
 // DEV ENV ONLY - to test multiple blocks being mined
