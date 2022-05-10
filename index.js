@@ -64,6 +64,11 @@ app.post("/api/transact", (req, res) => {
     res.json({ type: "success", transaction });
 });
 
+// get the transaction pool map
+app.get("/api/transaction-pool-map", (req, res) => {
+    res.json(transactionPool.transactionMap);
+});
+
 // DEV ENV ONLY - to test multiple blocks being mined
 let PEER_PORT;
 
