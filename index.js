@@ -10,13 +10,12 @@ const app = express();
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
-const pubsub = new PubSub({ blockchain });
+const pubsub = new PubSub({ blockchain, transactionPool });
 const DEFAULT_PORT = 3000;
 
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
 // make sure that the user has access to blockchain on connect
-
 // use body parsor middleware to read json
 app.use(bodyParser.json());
 
@@ -61,6 +60,9 @@ app.post("/api/transact", (req, res) => {
 
     transactionPool.setTransaction(transaction);
 
+    // notify network of transaction
+    pubsub.broadcastTransaction(transaction);
+
     res.json({ type: "success", transaction });
 });
 
@@ -74,6 +76,7 @@ let PEER_PORT;
 
 if (process.env.GENERATE_PEER_PORT === "true") {
     PEER_PORT = DEFAULT_PORT + Math.ceil(Math.random() * 1000);
+    console.log(PEER_PORT);
 }
 
 // replace local chain with most accurate chain
