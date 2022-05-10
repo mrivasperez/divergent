@@ -8,6 +8,10 @@ class TransactionPool {
         this.transactionMap[transaction.id] = transaction;
     }
 
+    setMap(transactionMap) {
+        this.transactionMap = transactionMap;
+    }
+
     existingTransaction({ inputAddress }) {
         // check if transaction is in the map
         const transactions = Object.values(this.transactionMap);

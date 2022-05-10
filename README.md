@@ -31,16 +31,20 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
     -
 
-### The Back-End API
+### The API
 
 -   Set up express API to allow for interaction with the blockchain
     -   GET request to read
-    -   POST request to wrtie
+    -   POST request to mine
+    -   POST request to add transaction to transaction pool map
+    -   GET request to read transaction pool map
 -   Implemented real time messaging network through Redis to enable chain broadcasting
     -   Confirmed real time messaging works by starting peers through alternate ports
 -   Optimized code to avoid redundant interaction
 
 ### The Cryptocurrency
+
+#### The Wallet
 
 -   Set up the core wallet class for the cryptocurrency
 -   Developed key pair and public key addressing system
@@ -49,3 +53,8 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
 -   Created functionality to validate transactions
 -   Improved hash function to recognize objects with new properties as changes in incoming data
 -   Tested to prevent vulnerabilities
+
+#### The Transaction Pool
+- Created core transaction pool
+- Transactions are broadcasted when they are added to the pool
+- The transaction pool is synced when new peers are connected 
