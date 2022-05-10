@@ -5,12 +5,20 @@ const Blockchain = require("./blockchain/index");
 const PubSub = require("./app/pubsub");
 const TransactionPool = require("./wallet/transaction-pool");
 const Wallet = require("./wallet");
+const TransactionMiner = require("./app/transaction-miner");
 
 const app = express();
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({ blockchain, transactionPool, wallet });
+const transactionMiner = new TransactionMiner({
+    blockchain,
+    transactionPool,
+    wallet,
+    pubsub,
+});
+
 const DEFAULT_PORT = 3000;
 
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
@@ -69,6 +77,14 @@ app.post("/api/transact", (req, res) => {
 // get the transaction pool map
 app.get("/api/transaction-pool-map", (req, res) => {
     res.json(transactionPool.transactionMap);
+});
+
+// mine transactions
+app.get("/api/mine-transactions", (req, res) => {
+    transactionMiner.mineTransactions();
+
+    // redirect user to blocks
+    res.redirect("/api/blocks");
 });
 
 // DEV ENV ONLY - to test multiple blocks being mined
