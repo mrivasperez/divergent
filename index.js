@@ -44,10 +44,17 @@ app.post("/api/transact", (req, res) => {
     // set amount and recipient
     const { amount, recipient } = req.body;
 
-    let transaction;
+    // check if transaction by wallet already exists
+    let transaction = transactionPool.existingTransaction({
+        inputAddress: wallet.publicKey,
+    });
 
     try {
-        transaction = wallet.createTransaction({ recipient, amount });
+        if (transaction) {
+            transaction.update({ senderWallet: wallet, recipient, amount });
+        } else {
+            transaction = wallet.createTransaction({ recipient, amount });
+        }
     } catch (error) {
         return res.status(400).json({ type: "error", message: error.message });
     }
