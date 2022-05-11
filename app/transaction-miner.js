@@ -18,7 +18,7 @@ class TransactionMiner {
         );
 
         // add a block consisting of  transactions to the blockchain
-        this.blockchain.addBlock({ date: validTransactions });
+        this.blockchain.addBlock({ data: validTransactions });
 
         // broadcast the updated blockchain to the network
         this.pubsub.broadcastChain();
