@@ -1,3 +1,4 @@
+const Block = require("../blockchain/block.js");
 const { STARTING_BALANCE } = require("../config.js");
 const { ec, cryptoHash } = require("../util");
 const Transaction = require("./transaction.js");
@@ -23,6 +24,23 @@ class Wallet {
         }
 
         return new Transaction({ senderWallet: this, recipient, amount });
+    }
+
+    static calculateBalance({ chain, address }) {
+        let outputsTotal = 0;
+
+        for(let i =1; i < chain.length; i++){
+            const currentBlock = chain[i]
+            for (let transaction of currentBlock.data){
+                const addressOutput = transaction.outputMap[address]
+                if(addressOutput) {
+                    // add to total
+                    outputsTotal = outputsTotal + addressOutput
+                }
+            }
+        }
+
+        return STARTING_BALANCE + outputsTotal
     }
 }
 

@@ -1,6 +1,8 @@
 const Wallet = require("../index");
 const Transaction = require("../transaction");
 const { verifySignature } = require("../../util");
+const Blockchain = require("../../blockchain");
+const { STARTING_BALANCE } = require("../../config");
 describe("Wallet", () => {
     let wallet;
 
@@ -70,6 +72,55 @@ describe("Wallet", () => {
 
             it("should output the amount to the recipient", () => {
                 expect(transaction.outputMap[recipient]).toEqual(amount);
+            });
+        });
+    });
+
+    describe("calculateBalance()", () => {
+        let blockchain;
+
+        beforeEach(() => {
+            blockchain = new Blockchain();
+        });
+
+        describe("and there are no outputs for the wallet", () => {
+            it("should return the `STARTING_BALANCE`", () => {
+                expect(
+                    Wallet.calculateBalance({
+                        chain: blockchain.chain,
+                        address: wallet.publicKey,
+                    })
+                ).toEqual(STARTING_BALANCE);
+            });
+        });
+
+        describe("and there are outputs for the wallet", () => {
+            let transactionOne, transactionTwo;
+            beforeEach(() => {
+                transactionOne = new Wallet().createTransaction({
+                    recipient: wallet.publicKey,
+                    amount: 50,
+                });
+
+                transactionTwo = new Wallet().createTransaction({
+                    recipient: wallet.publicKey,
+                    amount: 25,
+                });
+
+                blockchain.addBlock({ data: [transactionOne, transactionTwo] });
+            });
+
+            it("should add the sum of all outputs to the wallet balance", () => {
+                expect(
+                    Wallet.calculateBalance({
+                        chain: blockchain.chain,
+                        address: wallet.publicKey,
+                    })
+                ).toEqual(
+                    STARTING_BALANCE +
+                        transactionOne.outputMap[wallet.publicKey] +
+                        transactionTwo.outputMap[wallet.publicKey]
+                );
             });
         });
     });
