@@ -79,6 +79,8 @@ describe("Wallet", () => {
             it("should call `Wallet.calculateBalanace`", () => {
                 const calculateBalanceMock = jest.fn();
 
+                const originalCalculateBalance = Wallet.calculateBalance;
+
                 Wallet.calculateBalance = calculateBalanceMock;
 
                 wallet.createTransaction({
@@ -88,6 +90,8 @@ describe("Wallet", () => {
                 });
 
                 expect(calculateBalanceMock).toHaveBeenCalled();
+
+                Wallet.calculateBalance = originalCalculateBalance;
             });
         });
     });
