@@ -224,7 +224,34 @@ describe("Blockchain", () => {
         });
 
         describe("and the transaction data has at least one malformed input", () => {
-            it("should return false", () => {});
+            it("should return false", () => {
+                wallet.balance = 9000;
+
+                const devilOutputMap = {
+                    [wallet.publicKey]: 8900,
+                    fooRecipient: 100,
+                };
+
+                const devilTransaction = {
+                    input: {
+                        timestamp: Date.now(),
+                        amount: wallet.balance,
+                        address: wallet.publicKey,
+                        signature: wallet.sign(devilOutputMap),
+                    },
+                    outputMap: devilOutputMap,
+                };
+
+                newChain.addBlock({
+                    data: [devilTransaction, rewardTransaction],
+                });
+
+                expect(
+                    blockchain.validTransactionData({
+                        chain: newChain.chain,
+                    })
+                ).toBe(false);
+            });
         });
 
         describe("and a block contains multiple identical transactions", () => {
