@@ -1,5 +1,6 @@
 const Block = require("./block");
 const { cryptoHash } = require("../util");
+const { REWARD_INPUT } = require("../config");
 
 class Blockchain {
     constructor() {
@@ -27,6 +28,26 @@ class Blockchain {
         if (onSuccess) onSuccess();
         console.log("The chain was replaced with", chain);
         this.chain = chain;
+    }
+
+    validTransactionData({ chain }) {
+        for (let i = 1; i < chain.length; i++) {
+            const block = chain[i];
+            let rewardTransactionCount = 0;
+
+            for (let transaction of block.data) {
+                if (transaction.input.address === REWARD_INPUT.address) {
+                    rewardTransactionCount += 1;
+
+                    if (rewardTransactionCount > 1) {
+                        console.error("Miner rewards ezc");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 
     static isValidChain(chain) {
