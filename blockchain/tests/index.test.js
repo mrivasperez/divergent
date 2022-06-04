@@ -255,7 +255,22 @@ describe("Blockchain", () => {
         });
 
         describe("and a block contains multiple identical transactions", () => {
-            it("should return false", () => {});
+            it("should return false", () => {
+                newChain.addBlock({
+                    data: [
+                        transaction,
+                        transaction,
+                        transaction,
+                        rewardTransaction,
+                    ],
+                });
+
+                expect(
+                    blockchain.validTransactionData({
+                        chain: newChain.chain,
+                    })
+                ).toBe(false);
+            });
         });
     });
 });
