@@ -29,7 +29,6 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   adjusted difficutly for each block to ensure block are mined closest to desired rate
     -   switched to hexadecimal character-based difficulty criteria to binary bit-based difficulty criteria
     -   protected chain from potential difficulty jump attacks by adding extra validation for the blockchain
-    -
 
 ### The API
 
@@ -38,6 +37,8 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
     -   POST request to mine
     -   POST request to add transaction to transaction pool map
     -   GET request to read transaction pool map
+    -   GET request to mine transactions
+    -   GET request to get wallet information
 -   Implemented real time messaging network through Redis to enable chain broadcasting
     -   Confirmed real time messaging works by starting peers through alternate ports
 -   Optimized code to avoid redundant interaction
@@ -55,6 +56,7 @@ You are welcome to contribute, provide feedback, fork, and modify it to make it 
 -   Tested to prevent vulnerabilities
 
 #### The Transaction Pool
-- Created core transaction pool
-- Transactions are broadcasted when they are added to the pool
-- The transaction pool is synced when new peers are connected 
+
+-   Created core transaction pool
+-   Transactions are broadcasted when they are added to the pool
+-   The transaction pool is synced when new peers are connected
