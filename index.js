@@ -91,6 +91,19 @@ app.get("/api/mine-transactions", (req, res) => {
     res.redirect("/api/blocks");
 });
 
+// get a wallet's balance
+app.get("/api/wallet-info", (req, res) => {
+    const address = wallet.publicKey;
+
+    res.json({
+        address,
+        balance: Wallet.calculateBalance({
+            chain: blockchain.chain,
+            address,
+        }),
+    });
+});
+
 // DEV ENV ONLY - to test multiple blocks being mined
 let PEER_PORT;
 
