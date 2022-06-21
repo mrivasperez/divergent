@@ -1,1 +1,2 @@
-console.log('hey')
+import React from 'react';
+
