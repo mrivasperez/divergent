@@ -30,7 +30,7 @@ const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 app.use(bodyParser.json());
 
 // allow server to send static files
-app.use(express.static(path.join(__dirname, "./client")));
+app.use(express.static(path.join(__dirname, "./client/dist")));
 
 // read blockchain
 app.get("/api/blocks", (req, res) => {
@@ -110,7 +110,7 @@ app.get("/api/wallet-info", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/index.html"));
+    res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
 // DEV ENV ONLY - to test multiple blocks being mined
