@@ -1,6 +1,8 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const request = require("request");
+const path = require("path");
+
 const Blockchain = require("./blockchain/index");
 const PubSub = require("./app/pubsub");
 const TransactionPool = require("./wallet/transaction-pool");
@@ -26,6 +28,9 @@ const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 // make sure that the user has access to blockchain on connect
 // use body parsor middleware to read json
 app.use(bodyParser.json());
+
+// allow server to send static files
+app.use(express.static(path.join(__dirname, "./client")));
 
 // read blockchain
 app.get("/api/blocks", (req, res) => {
@@ -60,7 +65,11 @@ app.post("/api/transact", (req, res) => {
         if (transaction) {
             transaction.update({ senderWallet: wallet, recipient, amount });
         } else {
-            transaction = wallet.createTransaction({ recipient, amount });
+            transaction = wallet.createTransaction({
+                recipient,
+                amount,
+                chain: blockchain.chain,
+            });
         }
     } catch (error) {
         return res.status(400).json({ type: "error", message: error.message });
@@ -85,6 +94,23 @@ app.get("/api/mine-transactions", (req, res) => {
 
     // redirect user to blocks
     res.redirect("/api/blocks");
+});
+
+// get a wallet's balance
+app.get("/api/wallet-info", (req, res) => {
+    const address = wallet.publicKey;
+
+    res.json({
+        address,
+        balance: Wallet.calculateBalance({
+            chain: blockchain.chain,
+            address,
+        }),
+    });
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/index.html"));
 });
 
 // DEV ENV ONLY - to test multiple blocks being mined
