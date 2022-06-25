@@ -10,7 +10,7 @@ The transformation is happening now, but it is leaving too many behind.
 
 The biggest barrier to entry is simple: it is too difficult to understand. Mining, wallets, transactions, and cryptography don't make sense unless you waste time researching.
 
-To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with a blockchain and cryptocurrency to more easily understand the technology without paying a dime.
+To overcome this barrier, I've created this cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with a blockchain and cryptocurrency to more easily understand the technology without paying a dime.
 
 The end goal is to help as many people understand cryptocurrencies and the blockchain, so they can confidently participate in the growing, divergent society of the future.
 
