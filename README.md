@@ -4,15 +4,15 @@ A blockchain, cryptocurrency, and comprehensive crypto platform implemented in J
 
 ## Why?
 
-One of my core beliefs is that cryptocurrencies and the blockchain are the future of government, finance, creativity, and IT. The transformation is happening now, but it is leaving too many people behind.
+One of my core beliefs is that cryptocurrencies and the blockchain are the future of government, finance, art, culture, and IT. 
 
-The biggest barriers to entry is simple: it is too difficult of a process to understand. Mining, wallets, transactions, and cryptography don't make sense unless you waste time researching.
+The transformation is happening now, but it is leaving too many behind.
 
-To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with a blockchain and cryptocurrency and more easily understand the technologies behind it without paying a dime.
+The biggest barrier to entry is simple: it is too difficult to understand. Mining, wallets, transactions, and cryptography don't make sense unless you waste time researching.
 
-The end goal is to help as many people understand cryptocurrencies/the blockchain and how it operates, so they can confidently participate in the rapidly growing divergent society of the future.
+To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with a blockchain and cryptocurrency to more easily understand the technology without paying a dime.
 
-You are welcome to contribute, provide feedback, fork, and modify it to make it your own.
+The end goal is to help as many people understand cryptocurrencies and the blockchain, so they can confidently participate in the growing, divergent society of the future.
 
 ## Status
 
