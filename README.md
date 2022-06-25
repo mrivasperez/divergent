@@ -4,11 +4,11 @@ A blockchain, cryptocurrency, and comprehensive crypto platform implemented in J
 
 ## Why?
 
-One of my core beliefs is that cryptocurrencies and the blockchain are the future of finance, digital art, and IT. The transformation is happening now, but it is leaving too many people behind.
+One of my core beliefs is that cryptocurrencies and the blockchain are the future of government, finance, creativity, and IT. The transformation is happening now, but it is leaving too many people behind.
 
-The biggest barriers to entry is simple: it is too difficult of a process to understand. Mining, wallets, transactions, and cryptography don't make sense unless you spend hours researching.
+The biggest barriers to entry is simple: it is too difficult of a process to understand. Mining, wallets, transactions, and cryptography don't make sense unless you waste time researching.
 
-To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with the blockchain and more easily understand the technologies behind it without paying a dime.
+To overcome this barrier, I've created my own open source cryptocurrency/blockchain in JavaScript (I don't expect it to have any monetary value). I call it Divergent Technology and will be using it to create an open source platform to interact with a blockchain and cryptocurrency and more easily understand the technologies behind it without paying a dime.
 
 The end goal is to help as many people understand cryptocurrencies/the blockchain and how it operates, so they can confidently participate in the rapidly growing divergent society of the future.
 
