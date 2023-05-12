@@ -5,7 +5,7 @@
 A blockchain, cryptocurrency, and comprehensive crypto platform implemented in JavaScript.
 
 ## Getting Started
-
+> There is no frontend, so you'll have to interact with the blockchain via the API. I used [Postman](https://www.postman.com)
 ### Requirements
 
 - [Redis](https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/)
